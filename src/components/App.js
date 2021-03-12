@@ -83,7 +83,7 @@ class App extends Component {
       this.setState({ loading: true })
       this.state.edCert.methods.uploadImage(result[0].hash, student).send({ from: this.state.account }).on('transactionHash', (hash) => {
       this.setState({ loading: false })
-      // refresh 
+      // refresh
       window.location.reload(false);
       })
     })
