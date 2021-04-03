@@ -111,9 +111,7 @@ class App extends Component {
       this.setState({
         images: images.filter(x => x.student.includes(searchValue))
       })
-
   }
-
 
   constructor(props) {
     super(props)

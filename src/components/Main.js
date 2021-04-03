@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Identicon from 'identicon.js';
+import info from '../InfoIconBlue.jpg';
 
 class Main extends Component {
 
@@ -12,7 +13,14 @@ class Main extends Component {
             <div className="content mr-auto ml-auto">
               <p>&nbsp;</p>
 
-              <h2>Post a Certification</h2>
+              <h2> Issue a Certification &nbsp;
+                 <img src={info} height="21"
+                    onClick={(event) => {
+                    alert("To issue a certification enter the wallet address of the recipient then upload the image of the certificate. You can search for certifications owned by a recipient by entering their wallet address in the search filter.")
+                  }}
+                 />
+              </h2>
+
               <form onSubmit={(event) => {
                 event.preventDefault()
                 const student = this.studentWallet.value
@@ -30,12 +38,14 @@ class Main extends Component {
                         required />
                   </div>
                 <button type="submit" className="btn btn-primary btn-block btn-lg">Upload</button>
+
               </form>
 
 
               <p>&nbsp;</p>
               <p>&nbsp;</p>
-              <label>Search by Owner: </label>
+
+              <label>Search by owner: </label>
               <input
                   type="submit"
                   id="SearchOwner"
@@ -46,9 +56,6 @@ class Main extends Component {
                   onChange={ this.props.getValueInput } />
 
               <p>&nbsp;</p>
-
-
-
 
               { this.props.images.map((image, key) => {
                 return(
