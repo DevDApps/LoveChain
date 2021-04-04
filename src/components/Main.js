@@ -13,10 +13,11 @@ class Main extends Component {
             <div className="content mr-auto ml-auto">
               <p>&nbsp;</p>
 
-              <h2> Issue a Certification &nbsp;
+              <h2> Issue a Certification&nbsp;
                  <img src={info} height="21"
                     onClick={(event) => {
-                    alert("To issue a certification enter the wallet address of the recipient then upload the image of the certificate. You can search for certifications owned by a recipient by entering their wallet address in the search filter.")
+                    alert("To issue a certification on the blockchain, enter the wallet address of the recipient and upload the image of the certificate or diploma. You can search for certifications owned by a recipient by entering their wallet address in the search filter.  "
+                     + "\r\n" +  "\r\n" +  "Edcert is an informal way to show educational achievements.")
                   }}
                  />
               </h2>
