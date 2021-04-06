@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Identicon from 'identicon.js';
-import photo from '../photo.png'
+import love from '../Love.png';
 
 class Navbar extends Component {
 
@@ -12,8 +12,8 @@ class Navbar extends Component {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <img src={photo} width="30" height="30" className="d-inline-block align-top" alt="" />
-          &nbsp; EdCert
+          <img src={love} width="100" height="35" className="d-inline-block align-bottom" alt="" />
+          &nbsp;Chain
         </a>
         <ul className="navbar-nav px-3">
           <li className="nav-item text-nowrap d-none d-sm-none d-sm-block">

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Identicon from 'identicon.js';
 import info from '../InfoIconBlue.jpg';
+import love from '../Love.png';
 
 class Main extends Component {
 
@@ -9,44 +10,49 @@ class Main extends Component {
 
       <div className="container-fluid mt-5">
         <div className="row">
-          <main role="main" className="col-lg-12 ml-auto mr-auto" style={{ maxWidth: '500px' }}>
+          <main role="main" className="col-lg-12 ml-auto mr-auto" style={{ maxWidth: '900px' }}>
             <div className="content mr-auto ml-auto">
               <p>&nbsp;</p>
 
-              <h2> Issue a Certification&nbsp;
+              <h2> Post your profile
+                &nbsp;
                  <img src={info} height="21"
                     onClick={(event) => {
-                    alert("To issue a certification on the blockchain, enter the wallet address of the recipient and upload the image of the certificate or diploma. You can search for certifications owned by a recipient by entering their wallet address in the search filter.  "
-                     + "\r\n" +  "\r\n" +  "Edcert is an informal way to show educational achievements.")
+                    alert("You can post your profile to LoveChain by entering your email and uploading a picture of yourself. "
+                     + " Your email will only be visible to the people that you choose to connect with by clicking on their profile. "
+                     + " Your identicon will then appear in their interested list under their profile picture. "
+                     + " That person can then either email you, or click on your profile so that their email will be visible to you. "
+                     + "\r\n" +  "\r\n"
+                     + "You can filter by the people that clicked on your profile."
+                   )
                   }}
                  />
               </h2>
 
               <form onSubmit={(event) => {
                 event.preventDefault()
-                const student = this.studentWallet.value
-                this.props.uploadImage(student)
+                const email = this.emailAddress.value
+                this.props.uploadImage(email)
               }} >
                 <input type='file' accept=".jpg, .jpeg, .png, .bmp, .gif" onChange={this.props.captureFile} />
                   <div className="form-group mr-sm-2">
                     <br></br>
                       <input
-                        id="studentWallet"
-                        type="text"
-                        ref={(input) => { this.studentWallet = input }}
+                        id="emailAddress"
+                        type="email"
+                        ref={(input) => { this.emailAddress = input }}
                         className="form-control"
-                        placeholder="Wallet Address to Award Certificate to ..."
+                        placeholder="Email address ..."
                         required />
                   </div>
                 <button type="submit" className="btn btn-primary btn-block btn-lg">Upload</button>
-
               </form>
 
 
               <p>&nbsp;</p>
               <p>&nbsp;</p>
 
-              <label>Search by owner: </label>
+              <label>Filter profiles that are interested in me: </label>
               <input
                   type="submit"
                   id="SearchOwner"
@@ -57,38 +63,48 @@ class Main extends Component {
                   onChange={ this.props.getValueInput } />
 
               <p>&nbsp;</p>
-
+              <div className="card-deck">
               { this.props.images.map((image, key) => {
                 return(
 
-                <div className="card mb-4" key={key} >
-                    <div className="card-header">
-                      <img
-                        className='mr-2'
-                        width='30'
-                        height='30'
-                        src={`data:image/png;base64,${new Identicon(image.student, 30).toString()}`}
-                      />
-                      <small className="text-muted">{image.student}</small>
-                    </div>
 
-                    <ul id="imageList" className="list-group list-group-flush">
-                      <li className="list-group-item">
+                  <div className="col-sm-6 col-md-4" key={key} >
+                     <div className="card-header">
+                       <img
+                         className='mr-2'
+                         width='30'
+                         height='30'
+                         src={`data:image/png;base64,${new Identicon(image.author, 30).toString()}`}
+                       />
+                       <small className="text">{image.email.substring(0, 3)
+                                               + "***@***"
+                                               + image.email.substring(image.email.length-5, image.email.length)}
+                       </small>
+                     </div>
+                      <div className="card-body">
                         <p className="text-center">
-                            <img  src={`https://ipfs.infura.io/ipfs/${image.hash}`} width="45%"   />
+                            <img  src={`https://ipfs.infura.io/ipfs/${image.hash}`} height="250px" style={{ maxWidth: '250px' }}  />
                         </p>
+
+                      </div>
+                      <div className="card-footer">
                         <a
-                        href={`https://ipfs.infura.io/ipfs/${image.hash}`}
-                        target="_blank"
-                        rel="noopener noreferrer">
-                             <small className="text-muted">Issued by: {image.author}</small>
+                              href={`https://ipfs.infura.io/ipfs/${image.hash}`}
+                              target="_blank"
+                              rel="noopener noreferrer">
+                                   <small className="text-muted"> <img
+                                      className='mr-2'
+                                      width='30'
+                                      height='30'
+                                      src={`data:image/png;base64,${new Identicon(image.author, 30).toString()}`}
+                                    /></small>
                         </a>
-                      </li>
-                    </ul>
-                  </div>
+                      </div>
+                      <br/>
+                    </div>
                 )
               })}
-
+              </div>
             </div>
           </main>
         </div>

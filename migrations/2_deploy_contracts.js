@@ -1,5 +1,5 @@
-const EdCert = artifacts.require("EdCert");
+const LoveChain = artifacts.require("LoveChain");
 
 module.exports = function(deployer) {
-  deployer.deploy(EdCert);
+  deployer.deploy(LoveChain);
 };

@@ -1,4 +1,4 @@
-import EdCert from '../abis/EdCert.json'
+import LoveChain from '../abis/LoveChain.json'
 import React, { Component } from 'react';
 import Identicon from 'identicon.js';
 import Navbar from './Navbar'
@@ -37,15 +37,15 @@ class App extends Component {
     this.setState({ account: accounts[0] })
     // Network ID
     const networkId = await web3.eth.net.getId()
-    const networkData = EdCert.networks[networkId]
+    const networkData = LoveChain.networks[networkId]
     if(networkData) {
-      const edCert = new web3.eth.Contract(EdCert.abi, networkData.address)
-      this.setState({ edCert })
-      const imagesCount = await edCert.methods.imageCount().call()
+      const loveChain = new web3.eth.Contract(LoveChain.abi, networkData.address)
+      this.setState({ loveChain })
+      const imagesCount = await loveChain.methods.imageCount().call()
       this.setState({ imagesCount })
       // Load images
       for (var i = 1; i <= imagesCount; i++) {
-        const image = await edCert.methods.images(i).call()
+        const image = await loveChain.methods.images(i).call()
         this.setState({
           images: [...this.state.images, image]
         })
@@ -53,7 +53,7 @@ class App extends Component {
 
       this.setState({ loading: false})
     } else {
-      window.alert('EdCert contract not deployed to detected network.')
+      window.alert('LoveChain contract not deployed to detected network.')
     }
   }
 
@@ -69,7 +69,7 @@ class App extends Component {
     console.log('buffer', this.state.buffer)  }
   }
 
-  uploadImage = student => {
+  uploadImage = email => {
     console.log("Submitting file to ipfs...")
 
     //adding file to the IPFS
@@ -81,7 +81,7 @@ class App extends Component {
       }
 
       this.setState({ loading: true })
-      this.state.edCert.methods.uploadImage(result[0].hash, student).send({ from: this.state.account }).on('transactionHash', (hash) => {
+      this.state.loveChain.methods.uploadImage(result[0].hash, email).send({ from: this.state.account }).on('transactionHash', (hash) => {
       this.setState({ loading: false })
       // refresh
       window.location.reload(false);
@@ -109,7 +109,7 @@ class App extends Component {
       const { images } = this.state
       console.log("in filterNames searchValue = ", searchValue)
       this.setState({
-        images: images.filter(x => x.student.includes(searchValue))
+        images: images.filter(x => x.email.includes(searchValue))
       })
   }
 
@@ -117,7 +117,7 @@ class App extends Component {
     super(props)
     this.state = {
       account: '',
-      edCert: null,
+      loveChain: null,
       images: [],
       userSearchFilter: "",
       userSearchFilterLast: "",
