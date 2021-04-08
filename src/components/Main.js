@@ -20,7 +20,7 @@ class Main extends Component {
                     onClick={(event) => {
                     alert("You can post your profile to LoveChain by entering your email and uploading a picture of yourself. "
                      + " You may contact users by clicking on thier hidden email address and sending them a message. "
-                     + " You do not need to have a profile uploaded to send a message. "                
+                     + " You do not need to have a profile uploaded to send a message. "
                    )
                   }}
                  />
@@ -49,21 +49,9 @@ class Main extends Component {
               <p>&nbsp;</p>
               <p>&nbsp;</p>
 
-              <label>Filter profiles that are interested in me: </label>
-              <input
-                  type="submit"
-                  id="SearchOwner"
-                  type="text"
-                  ref={(input) => { this.userSearchFilter = input }}
-                  className="form-control"
-                  placeholder="0xC60124F569A7F59C852f82E5bC13a508e4513Be1 ..."
-                  onChange={ this.props.getValueInput } />
-
-              <p>&nbsp;</p>
               <div className="card-deck">
               { this.props.images.map((image, key) => {
                 return(
-
 
                   <div className="col-sm-6 col-md-4" key={key} >
                      <div className="card-header">

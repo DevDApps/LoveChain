@@ -1,8 +1,8 @@
 {
   "name": "LoveChain",
   "version": "0.1.0",
-  "description": "Decentralized Social Media",
-  "author": "Dapp University",
+  "description": "Decentralized Dating Site",
+  "author": "DevDapps",
   "homepage": "http://DevDApps.github.io/LoveChain",
   "dependencies": {
     "@truffle/hdwallet-provider": "^1.1.0",
@@ -27,6 +27,7 @@
     "truffle-hdwallet-provider-privkey": "^0.3.0",
     "web3": "^1.3.0"
   },
+  "homepage": "http://DevDApps.github.io/LoveChain",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
