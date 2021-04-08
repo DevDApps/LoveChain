@@ -5,15 +5,15 @@ require('chai')
   .should()
 
 contract('LoveChain', ([deployer, author, tipper]) => {
-  let LoveChain
+  let loveChain
 
   before(async () => {
-    LoveChain = await LoveChain.deployed()
+    loveChain = await LoveChain.deployed()
   })
 
   describe('deployment', async () => {
     it('deploys successfully', async () => {
-      const address = await LoveChain.address
+      const address = await loveChain.address
       assert.notEqual(address, 0x0)
       assert.notEqual(address, '')
       assert.notEqual(address, null)
@@ -21,7 +21,7 @@ contract('LoveChain', ([deployer, author, tipper]) => {
     })
 
     it('has a name', async () => {
-      const name = await LoveChain.name()
+      const name = await loveChain.name()
       assert.equal(name, 'LoveChain')
     })
   })
@@ -31,8 +31,8 @@ contract('LoveChain', ([deployer, author, tipper]) => {
     const hash = 'QmV8cfu6n4NT5xRr2AHdKxFMTZEJrA44qgrBCr739BN9Wb'
 
     before(async () => {
-      result = await LoveChain.uploadImage(hash, 'test@test.net', { from: author })
-      imageCount = await LoveChain.imageCount()
+      result = await loveChain.uploadImage(hash, 'test123@test.com', { from: author })
+      imageCount = await loveChain.imageCount()
     })
 
     //check event
@@ -42,23 +42,22 @@ contract('LoveChain', ([deployer, author, tipper]) => {
       const event = result.logs[0].args
       assert.equal(event.id.toNumber(), imageCount.toNumber(), 'id is correct')
       assert.equal(event.hash, hash, 'Hash is correct')
-      assert.equal(event.email, 'test@test.net', 'email address is correct')
+      assert.equal(event.email, 'test123@test.com', 'email address is correct')
       assert.equal(event.author, author, 'author is correct')
 
 
       // FAILURE: Image must have hash
-      await LoveChain.uploadImage('', 'test@test.net', { from: author }).should.be.rejected;
+      await loveChain.uploadImage('', 'test123@test.com', { from: author }).should.be.rejected;
 
       // FAILURE: Image must have description
-      await LoveChain.uploadImage('Image hash', '', { from: author }).should.be.rejected;
+      await loveChain.uploadImage('Image hash', '', { from: author }).should.be.rejected;
     })
 
     //check from Struct
     it('lists images', async () => {
-      const image = await edCeLoveChainrt.images(imageCount)
+      const image = await loveChain.images(imageCount)
       assert.equal(image.id.toNumber(), imageCount.toNumber(), 'id is correct')
       assert.equal(image.hash, hash, 'Hash is correct')
-      assert.equal(image.email, 'email address', 'description is correct')
       assert.equal(image.author, author, 'author is correct')
     })
 
