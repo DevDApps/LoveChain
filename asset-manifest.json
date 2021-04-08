@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/LoveChain/static/css/main.18de8aef.chunk.css",
+    "main.js": "/LoveChain/static/js/main.814ab5ac.chunk.js",
+    "main.js.map": "/LoveChain/static/js/main.814ab5ac.chunk.js.map",
+    "runtime-main.js": "/LoveChain/static/js/runtime-main.f52e79a1.js",
+    "runtime-main.js.map": "/LoveChain/static/js/runtime-main.f52e79a1.js.map",
+    "static/css/2.80dce9aa.chunk.css": "/LoveChain/static/css/2.80dce9aa.chunk.css",
+    "static/js/2.b0212769.chunk.js": "/LoveChain/static/js/2.b0212769.chunk.js",
+    "static/js/2.b0212769.chunk.js.map": "/LoveChain/static/js/2.b0212769.chunk.js.map",
+    "index.html": "/LoveChain/index.html",
+    "precache-manifest.8a41fa5d1f107ed832e8c43dc5eb41f1.js": "/LoveChain/precache-manifest.8a41fa5d1f107ed832e8c43dc5eb41f1.js",
+    "service-worker.js": "/LoveChain/service-worker.js",
+    "static/css/2.80dce9aa.chunk.css.map": "/LoveChain/static/css/2.80dce9aa.chunk.css.map",
+    "static/css/main.18de8aef.chunk.css.map": "/LoveChain/static/css/main.18de8aef.chunk.css.map",
+    "static/js/2.b0212769.chunk.js.LICENSE.txt": "/LoveChain/static/js/2.b0212769.chunk.js.LICENSE.txt",
+    "static/media/InfoIconBlue.jpg": "/LoveChain/static/media/InfoIconBlue.a55281dd.jpg",
+    "static/media/Love.png": "/LoveChain/static/media/Love.07175b8f.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.f52e79a1.js",
+    "static/css/2.80dce9aa.chunk.css",
+    "static/js/2.b0212769.chunk.js",
+    "static/css/main.18de8aef.chunk.css",
+    "static/js/main.814ab5ac.chunk.js"
+  ]
+}
