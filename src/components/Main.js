@@ -19,11 +19,8 @@ class Main extends Component {
                  <img src={info} height="21"
                     onClick={(event) => {
                     alert("You can post your profile to LoveChain by entering your email and uploading a picture of yourself. "
-                     + " Your email will only be visible to the people that you choose to connect with by clicking on their profile. "
-                     + " Your identicon will then appear in their interested list under their profile picture. "
-                     + " That person can then either email you, or click on your profile so that their email will be visible to you. "
-                     + "\r\n" +  "\r\n"
-                     + "You can filter by the people that clicked on your profile."
+                     + " You may contact users by clicking on thier hidden email address and sending them a message. "
+                     + " You do not need to have a profile uploaded to send a message. "                
                    )
                   }}
                  />
@@ -76,11 +73,16 @@ class Main extends Component {
                          height='30'
                          src={`data:image/png;base64,${new Identicon(image.author, 30).toString()}`}
                        />
-                       <small className="text">{image.email.substring(0, 3)
+
+                       <button onClick={(event) => {
+                         const message = prompt("Please type a message you would like to send, including contact info.  ")
+                         if (message != null) {alert("Your message  '" + message + "'  will be sent!")}
+                        }}>
+                             { image.email.substring(0, 3)
                                                + "***@***"
                                                + image.email.substring(image.email.length-5, image.email.length)}
-                       </small>
-                     </div>
+                        </button>
+                      </div>
                       <div className="card-body">
                         <p className="text-center">
                             <img  src={`https://ipfs.infura.io/ipfs/${image.hash}`} height="250px" style={{ maxWidth: '250px' }}  />
@@ -88,17 +90,7 @@ class Main extends Component {
 
                       </div>
                       <div className="card-footer">
-                        <a
-                              href={`https://ipfs.infura.io/ipfs/${image.hash}`}
-                              target="_blank"
-                              rel="noopener noreferrer">
-                                   <small className="text-muted"> <img
-                                      className='mr-2'
-                                      width='30'
-                                      height='30'
-                                      src={`data:image/png;base64,${new Identicon(image.author, 30).toString()}`}
-                                    /></small>
-                        </a>
+
                       </div>
                       <br/>
                     </div>
